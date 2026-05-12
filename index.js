@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGO_URI)
 .catch((err)=> console.error("MongoDB connection error", err));
 
 app.get('/', (req,res)=>{
-    req.send("Task Manager API is running...")
+    res.send("Task Manager API is running...")
 })
 
 const PORT = process.env.PORT||5000;
