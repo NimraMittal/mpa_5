@@ -13,7 +13,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 .catch((err)=> console.error("MongoDB connection error", err));
 
-app.length('/', (req,res)=>{
+app.get('/', (req,res)=>{
     req.send("Task Manager API is running...")
 })
 
