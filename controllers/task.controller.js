@@ -1,8 +1,8 @@
 const Task = require('../models/task.model')
 let taskCache = null
-let lastCache = null
+let lastCacheTime = null
 exports.getAllTasks = async(req,res)=>{
-    const now = DataTransfer.now()
+    const now = Date.now()
     if(taskCache && (now-lastCacheTime<60000)){
         return res.status(200).json({data: taskCache,
             source: 'cache'
@@ -13,7 +13,7 @@ exports.getAllTasks = async(req,res)=>{
     lastCacheTime = now;
     res.status(200).json({data: tasks, source:'database'})
 }
-exports.create = async(req,res)=>{
+exports.createTask = async(req,res)=>{
     const task = await Task.create(req.body)
     taskCache = null
     res.status(201).json(task)
